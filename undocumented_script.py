@@ -1,32 +1,53 @@
-def do_math_stuff():
-    result = []
-    for num in list_of_nums:
-        if num % 2 == 0:
-            result.append(num * 2)
-        else:
-            result.append(num * 3)
-    return result
+def process_numbers_by_parity(input_number_list):
+    """
+    Processes each number in a list based on its parity (even or odd).
+
+    Even numbers are multiplied by 2.
+    Odd numbers are multiplied by 3.
+    """
+    processed_list = [
+        number * 2 if number % 2 == 0 else number * 3 
+        # Multiplies by 2 if even, or 3 if odd.
+        for number in input_number_list
+    ]
+    return processed_list
 
 
-def do_string_stuff(list_of_strings):
-    x = ""
-    for s in list_of_strings:
-        if len(s) > 5:
-            x += s.upper() + " "
-        else:
-            x += s.lower() + " "
-    return x.strip()
 
+def generate_formatted_string(list_of_words):
+    """
+    Formats words based on its length.
+
+    Strings that are longer than 5 characters are converted to uppercase.
+    Strings that are 5 characters or shorter are converted to lowercase.
+
+    Args:
+        list_of_words (list[str]): A list of strings to be processed.
+
+    Returns:
+        str: A string containing all formatted words separated by a single 
+        space
+    """
+    formatted_words = [
+        word.upper() if len(word) > 5 else word.lower()
+        for word in list_of_words
+    ]
+    return " ".join(formatted_words)
 
 def main():
-    list1 = [1, 2, 3, 4, 5, 6, 7]
-    list2 = ["apple", "banana", "kiwi", "grapefruit", "cherry"]
+    '''
+    The main function. Defines example data and prints the results 
+    of the utility functions. 
+    '''
+    # Meaningful variable names following PEP 8 conventions. 
+    integer_list = [1, 2, 3, 4, 5, 6, 7]
+    word_list = ["apple", "banana", "kiwi", "grapefruit", "cherry"]
 
-    processed_nums = do_math_stuff(list1)
-    processed_strings = do_string_stuff(list2)
+    processed_nums = process_numbers_by_parity(integer_list)
+    processed_strings = generate_formatted_string(word_list)
 
     print("Processed Numbers:", processed_nums)
-    print("Processed Strings:", processed_strings)
+    print("Processed Sentence:", processed_strings)
 
 
 if __name__ == "__main__":
